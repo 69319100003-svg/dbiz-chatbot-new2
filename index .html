@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D-Biz Digital Assistant | วิทยาลัยเทคนิคตรัง</title>
+<style>
+:root{--navy:#0f1f4b;--blue:#2563eb;--purple:#7c3aed;--light:#f5f8ff;--text:#17233f;--muted:#71809d}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans Thai",Tahoma,Arial,sans-serif;color:var(--text);background:#f7f9ff}
+a{text-decoration:none;color:inherit}
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid #e8ecf5}
+.nav-inner{max-width:1180px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px}
+.logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--purple));display:grid;place-items:center;color:#fff;font-size:24px;box-shadow:0 8px 20px #2563eb30}
+.brand b{font-size:16px}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.nav-links{display:flex;gap:5px;align-items:center}
+.nav-links a{padding:9px 13px;border-radius:10px;font-size:13px;color:#43506c}
+.nav-links a:hover{background:#eef3ff;color:var(--blue)}
+.cta{background:linear-gradient(135deg,var(--blue),var(--purple))!important;color:#fff!important}
+.hero{background:radial-gradient(circle at 80% 20%,#7c3aed33,transparent 30%),linear-gradient(135deg,#0b1b49,#27358c 60%,#4c2a91);color:#fff}
+.hero-inner{max-width:1180px;margin:auto;min-height:590px;padding:70px 22px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:45px}
+.badge{display:inline-flex;gap:8px;align-items:center;background:#ffffff16;border:1px solid #ffffff25;padding:8px 13px;border-radius:30px;font-size:12px;margin-bottom:18px}
+.hero h1{font-size:clamp(34px,5vw,60px);line-height:1.12;margin-bottom:18px}
+.hero h1 span{color:#9fc3ff}.hero p{font-size:16px;line-height:1.8;color:#d9e2ff;max-width:650px}
+.hero-actions{display:flex;gap:12px;margin-top:27px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:13px;padding:13px 18px;font-weight:bold;cursor:pointer;font-size:13px}
+.btn-main{background:#fff;color:#214bc0}.btn-ghost{border:1px solid #ffffff40;color:#fff;background:#ffffff0d}
+.hero-card{background:#ffffff12;border:1px solid #ffffff25;border-radius:28px;padding:18px;box-shadow:0 25px 60px #0003}
+.chat-preview{background:#f7f9ff;border-radius:20px;overflow:hidden;color:var(--text)}
+.chat-head{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;padding:17px;display:flex;gap:10px;align-items:center}
+.chat-icon{width:40px;height:40px;background:#fff;border-radius:12px;display:grid;place-items:center;font-size:22px}
+.chat-head small{display:block;opacity:.8;margin-top:2px}
+.preview-body{padding:17px;min-height:260px}.bubble{background:#fff;padding:12px 14px;border-radius:15px;box-shadow:0 4px 15px #1b2c5b0d;margin-bottom:10px;font-size:12px;line-height:1.7}.bubble.user{background:#eaf0ff;margin-left:25%}
+.section{max-width:1180px;margin:auto;padding:78px 22px}.section-title{text-align:center;margin-bottom:35px}.eyebrow{color:var(--blue);font-size:12px;font-weight:bold}.section-title h2{font-size:30px;margin:7px 0}.section-title p{color:var(--muted);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{background:#fff;border:1px solid #e7ebf4;border-radius:20px;padding:23px;box-shadow:0 8px 25px #243b7d09}
+.card-icon{font-size:28px;margin-bottom:13px}.card h3{font-size:16px;margin-bottom:7px}.card p{font-size:12px;color:var(--muted);line-height:1.7}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.info-card{background:#fff;border-radius:22px;padding:25px;border:1px solid #e7ebf4}.info-card h3{margin-bottom:15px}.info-list{list-style:none}.info-list li{padding:10px 0;border-bottom:1px solid #eef1f7;font-size:13px;line-height:1.6}.info-list li:last-child{border:0}.label{color:var(--muted);font-size:11px;display:block}.apply{background:linear-gradient(135deg,#eef4ff,#f5efff)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.step{background:#fff;padding:20px;border-radius:18px;border:1px solid #e3e9f6}.num{width:34px;height:34px;border-radius:10px;background:#eaf0ff;color:var(--blue);display:grid;place-items:center;font-weight:bold;margin-bottom:12px}.step h3{font-size:14px;margin-bottom:7px}.step p{font-size:12px;color:var(--muted);line-height:1.7}
+.doc{margin-top:20px;background:#fff;border-radius:20px;padding:23px;border:1px solid #e3e9f6}.doc li{margin:9px 0;font-size:13px;line-height:1.6}
+.contact{background:#101e46;color:#fff}.contact .section-title p{color:#bdc9e8}.contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}.contact-box{background:#ffffff0d;border:1px solid #ffffff18;border-radius:20px;padding:24px}.contact-box p{font-size:13px;line-height:2;color:#d8e1f8}.contact-box a{color:#a9c7ff}.social{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.social a{padding:9px 12px;border-radius:10px;background:#ffffff12;font-size:12px}
+.chat-section{background:#f4f7ff}.chat-wrap{max-width:850px;margin:auto;background:#fff;border-radius:24px;overflow:hidden;border:1px solid #e4e9f4;box-shadow:0 15px 45px #273b8010}.chatbar{padding:17px 20px;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;display:flex;align-items:center;gap:10px}.chatbox{height:400px;overflow:auto;padding:20px;background:#f8faff}.msg{display:flex;margin-bottom:13px}.msg.user{justify-content:flex-end}.msg .bub{max-width:75%;padding:12px 15px;border-radius:16px;font-size:13px;line-height:1.7;background:#fff;box-shadow:0 3px 14px #172b5a0b}.msg.user .bub{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff}.quick{padding:12px 17px;border-top:1px solid #edf0f6}.quick button{border:1px solid #dce3f3;background:#f8faff;color:#3154a4;padding:7px 10px;border-radius:16px;font-size:11px;margin:3px;cursor:pointer}.input{display:flex;gap:9px;padding:13px 17px}.input input{flex:1;border:1px solid #dbe2ef;border-radius:24px;padding:12px 15px;outline:0}.input button{width:45px;border:0;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;cursor:pointer}
+.footer{text-align:center;background:#091536;color:#8fa1c9;padding:18px;font-size:11px}
+@media(max-width:850px){.nav-links a:not(.cta){display:none}.hero-inner,.info-grid,.contact-grid{grid-template-columns:1fr}.hero-inner{padding-top:50px}.cards{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.cards,.steps{grid-template-columns:1fr}.section{padding:55px 17px}.hero-inner{padding:45px 17px}.hero h1{font-size:38px}.hero-card{margin-top:10px}.nav-inner{padding:10px 14px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+<div class="nav-inner">
+<a href="#home" class="brand"><div class="logo">🤖</div><div><b>D-Biz AI Assistant</b><small>วิทยาลัยเทคนิคตรัง</small></div></a>
+<div class="nav-links">
+<a href="#home">หน้าแรก</a><a href="#menu">เมนู</a><a href="#chatbot">Chatbot</a><a href="#apply">สมัครเรียน</a><a href="#contact" class="cta">ติดต่อเรา</a>
+</div>
+</div>
+</nav>
+
+<header class="hero" id="home">
+<div class="hero-inner">
+<div>
+<div class="badge">● AI Assistant ออนไลน์ พร้อมให้บริการ</div>
+<h1>ผู้ช่วยอัจฉริยะ<br><span>ธุรกิจดิจิทัล</span></h1>
+<p>D-Biz AI Assistant ผู้ช่วยตอบคำถามเกี่ยวกับแผนกวิชาเทคโนโลยีธุรกิจดิจิทัล วิทยาลัยเทคนิคตรัง ตั้งแต่ข้อมูลแผนก หลักสูตร การสมัครเรียน เอกสาร ช่องทางติดต่อ และการเดินทาง</p>
+<div class="hero-actions">
+<a class="btn btn-main" href="#chatbot">💬 เริ่มสนทนากับ AI</a>
+<a class="btn btn-ghost" href="#apply">📝 ดูข้อมูลสมัครเรียน</a>
+</div>
+</div>
+<div class="hero-card"><div class="chat-preview">
+<div class="chat-head"><div class="chat-icon">🤖</div><div><b>D-Biz AI Assistant</b><small>พร้อมตอบคำถามของคุณ</small></div></div>
+<div class="preview-body">
+<div class="bubble">👋 สวัสดีครับ! มีอะไรให้ผมช่วยเกี่ยวกับแผนกเทคโนโลยีธุรกิจดิจิทัลไหมครับ?</div>
+<div class="bubble user">📚 แผนกเปิดสอนระดับไหนครับ?</div>
+<div class="bubble">เปิดสอนระดับ <b>ปวช. และ ปวส.</b> ครับ</div>
+</div></div></div>
+</div>
+</header>
+
+<section class="section" id="menu">
+<div class="section-title"><span class="eyebrow">SMART INFORMATION</span><h2>เมนูบริการ</h2><p>เข้าถึงข้อมูลสำคัญของแผนกได้อย่างรวดเร็ว</p></div>
+<div class="cards">
+<div class="card"><div class="card-icon">🏫</div><h3>ข้อมูลแผนก</h3><p>ข้อมูลวิทยาลัย ที่ตั้ง หัวหน้าแผนก อาคาร และรายละเอียดของแผนกวิชาเทคโนโลยีธุรกิจดิจิทัล</p></div>
+<div class="card"><div class="card-icon">📚</div><h3>หลักสูตร</h3><p>ข้อมูลระดับประกาศนียบัตรวิชาชีพ (ปวช.) และประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</p></div>
+<div class="card"><div class="card-icon">📝</div><h3>สมัครเรียน</h3><p>คุณสมบัติผู้สมัครและรายการเอกสารที่ต้องเตรียมสำหรับการสมัครเรียน</p></div>
+<div class="card"><div class="card-icon">📢</div><h3>ข่าวประชาสัมพันธ์</h3><p>แหล่งข่าวประชาสัมพันธ์จากงานประชาสัมพันธ์ วท.ตรัง (งานศูนย์ดิจิทัลฯ)</p></div>
+<div class="card"><div class="card-icon">🗺️</div><h3>แผนที่</h3><p>ดูตำแหน่งวิทยาลัยและจุดสังเกตอาคารแผนก พร้อมเปิด Google Maps</p></div>
+<div class="card"><div class="card-icon">📞</div><h3>ติดต่อเรา</h3><p>โทรศัพท์ เว็บไซต์ Facebook และ TikTok ของแผนก</p></div>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="section-title"><span class="eyebrow">ABOUT D-BIZ</span><h2>ข้อมูลแผนก</h2></div>
+<div class="info-grid">
+<div class="info-card"><h3>🏫 ข้อมูลสถานศึกษา</h3><ul class="info-list">
+<li><span class="label">วิทยาลัย</span>วิทยาลัยเทคนิคตรัง</li>
+<li><span class="label">แผนก</span>แผนกวิชาเทคโนโลยีธุรกิจดิจิทัล</li>
+<li><span class="label">อาคาร</span>ตึกอำนวยการ ชั้น 5</li>
+<li><span class="label">ที่อยู่</span>96 ถนนตรัง-ปะเหลียน หมู่ที่ 4 ตำบลบ้านควน อำเภอเมืองตรัง จังหวัดตรัง 92000</li>
+</ul></div>
+<div class="info-card"><h3>👨‍🏫 ข้อมูลแผนก</h3><ul class="info-list">
+<li><span class="label">หัวหน้าแผนก</span>นายชูเกียรติ คันฉ่อง</li>
+<li><span class="label">จำนวนครู</span>7 คน</li>
+<li><span class="label">หลักสูตร</span>ประกาศนียบัตรวิชาชีพ (ปวช.) และประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</li>
+</ul></div>
+</div>
+</section>
+
+<section class="section apply" id="apply">
+<div class="section-title"><span class="eyebrow">ADMISSION</span><h2>สมัครเรียน</h2><p>ข้อมูลเบื้องต้นสำหรับผู้สนใจสมัครเรียน</p></div>
+<div class="steps">
+<div class="step"><div class="num">1</div><h3>ตรวจสอบคุณสมบัติ</h3><p>ผู้สมัครสามารถสอบถามข้อมูลสำหรับ ม.3 ม.6 ปวช. หรือเทียบเท่า ตามระดับและสาขาที่เปิดรับสมัคร</p></div>
+<div class="step"><div class="num">2</div><h3>เตรียมเอกสาร</h3><p>เตรียมสำเนาบัตรประชาชน ทะเบียนบ้าน รูปถ่าย และเอกสารอื่นตามประกาศ</p></div>
+<div class="step"><div class="num">3</div><h3>ตรวจประกาศล่าสุด</h3><p>กำหนดการและรายละเอียดอาจเปลี่ยนแปลง ควรตรวจสอบประกาศรับสมัครล่าสุด</p></div>
+<div class="step"><div class="num">4</div><h3>ติดต่อแผนก</h3><p>สอบถามรายละเอียดเพิ่มเติมได้ที่โทรศัพท์ 075-501-070</p></div>
+</div>
+<div class="doc"><h3>📄 เอกสารสมัครเรียน</h3><ol>
+<li>สำเนาบัตรประจำตัวประชาชนของนักเรียน จำนวน 1 ฉบับ</li>
+<li>สำเนาทะเบียนบ้านของนักเรียน จำนวน 1 ฉบับ</li>
+<li>สำเนาบัตรประจำตัวประชาชนและทะเบียนบ้านของบิดา มารดา หรือผู้ปกครอง</li>
+<li>รูปถ่ายขนาด 1 นิ้ว จำนวน 1 รูป</li>
+<li>สำเนาใบเปลี่ยนชื่อ-นามสกุล (ถ้ามี) จำนวน 1 ฉบับ</li>
+</ol></div>
+</section>
+
+<section class="section chat-section" id="chatbot">
+<div class="section-title"><span class="eyebrow">AI CHATBOT</span><h2>พูดคุยกับ D-Biz AI Assistant</h2><p>พิมพ์คำถาม หรือเลือกหัวข้อที่ต้องการ</p></div>
+<div class="chat-wrap">
+<div class="chatbar"><span>🤖</span><b>D-Biz AI Assistant</b><small> • ออนไลน์</small></div>
+<div class="chatbox" id="chatbox"><div class="msg"><div class="bub">👋 สวัสดีครับ! ผมพร้อมช่วยตอบคำถามเกี่ยวกับแผนกเทคโนโลยีธุรกิจดิจิทัล วิทยาลัยเทคนิคตรังครับ</div></div></div>
+<div class="quick">
+<button onclick="ask('ข้อมูลแผนก')">🏫 ข้อมูลแผนก</button><button onclick="ask('หลักสูตร')">📚 หลักสูตร</button><button onclick="ask('สมัครเรียน')">📝 สมัครเรียน</button><button onclick="ask('เอกสารสมัครเรียน')">📄 เอกสาร</button><button onclick="ask('ติดต่อแผนก')">📞 ติดต่อ</button><button onclick="ask('แผนที่')">🗺️ แผนที่</button>
+</div>
+<div class="input"><input id="chatinput" placeholder="พิมพ์คำถามของคุณ..." onkeydown="if(event.key==='Enter')send()"><button onclick="send()">➤</button></div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="section">
+<div class="section-title"><span class="eyebrow">CONTACT</span><h2>ติดต่อเรา</h2><p>แผนกวิชาเทคโนโลยีธุรกิจดิจิทัล วิทยาลัยเทคนิคตรัง</p></div>
+<div class="contact-grid">
+<div class="contact-box"><h3>📍 ที่ตั้งและการติดต่อ</h3><p>🏫 วิทยาลัยเทคนิคตรัง<br>🏢 ตึกอำนวยการ ชั้น 5<br>👨‍🏫 หัวหน้าแผนก: นายชูเกียรติ คันฉ่อง<br>☎️ 075-501-070<br>📍 96 ถนนตรัง-ปะเหลียน หมู่ที่ 4 ตำบลบ้านควน อำเภอเมืองตรัง จังหวัดตรัง 92000</p><div class="social">
+<a href="http://www.technictrang.ac.th/" target="_blank">🌐 เว็บไซต์</a>
+<a href="https://www.tiktok.com/@dbtech.technictra?is_from_webapp=1&sender_device=pc" target="_blank">🎵 TikTok</a>
+<a href="https://maps.app.goo.gl/GWsjh1xyr6eh1hkN7" target="_blank">🗺️ Google Maps</a>
+</div></div>
+<div class="contact-box"><h3>🏢 จุดสังเกต</h3><p>ตึกหน้าสุด ตรงทางเข้าประตูใหญ่ที่มียามเฝ้า<br><br>📌 แผนกวิชาเทคโนโลยีธุรกิจดิจิทัลอยู่ที่ <b>ตึกอำนวยการ ชั้น 5</b><br><br><a href="https://maps.app.goo.gl/GWsjh1xyr6eh1hkN7" target="_blank">เปิดเส้นทางใน Google Maps →</a></p></div>
+</div>
+</div>
+</section>
+<footer class="footer">D-Biz AI Assistant • แผนกวิชาเทคโนโลยีธุรกิจดิจิทัล • วิทยาลัยเทคนิคตรัง</footer>
+
+<script>
+const box=document.getElementById('chatbox'),inp=document.getElementById('chatinput');
+function add(text,user=false){const m=document.createElement('div');m.className='msg '+(user?'user':'');const b=document.createElement('div');b.className='bub';b.innerHTML=text;m.appendChild(b);box.appendChild(m);box.scrollTop=box.scrollHeight}
+function ask(t){inp.value=t;send()}
+function send(){const t=inp.value.trim();if(!t)return;add(t,true);inp.value='';setTimeout(()=>add(reply(t)),350)}
+function reply(t){
+const x=t.toLowerCase();
+if(x.includes('สมัคร')||x.includes('เอกสาร')||x.includes('ม.3')||x.includes('ม.6'))return '📝 <b>การสมัครเรียน</b><br><br>คุณสมบัติเบื้องต้น: ม.3 ม.6 ปวช. หรือเทียบเท่า ตามระดับและสาขาที่เปิดรับสมัคร<br><br><b>เอกสาร:</b><br>1. สำเนาบัตรประชาชนของนักเรียน 1 ฉบับ<br>2. สำเนาทะเบียนบ้านของนักเรียน 1 ฉบับ<br>3. สำเนาบัตรประชาชนและทะเบียนบ้านของบิดา มารดา หรือผู้ปกครอง<br>4. รูปถ่ายขนาด 1 นิ้ว 1 รูป<br>5. สำเนาใบเปลี่ยนชื่อ-นามสกุล (ถ้ามี) 1 ฉบับ<br><br>⚠️ ควรตรวจสอบประกาศรับสมัครล่าสุดก่อนสมัคร';
+if(x.includes('แผนที่')||x.includes('เดินทาง'))return '🗺️ <b>ตำแหน่งแผนก</b><br><br>ตึกหน้าสุด ตรงทางเข้าประตูใหญ่ที่มียามเฝ้า<br>📌 ตึกอำนวยการ ชั้น 5<br><br><a href="https://maps.app.goo.gl/GWsjh1xyr6eh1hkN7" target="_blank">📍 เปิด Google Maps</a>';
+if(x.includes('ติดต่อ')||x.includes('โทร')||x.includes('เบอร์'))return '📞 <b>ติดต่อแผนก</b><br><br>☎️ 075-501-070<br>🏢 ตึกอำนวยการ ชั้น 5<br>🏫 วิทยาลัยเทคนิคตรัง<br><br><a href="http://www.technictrang.ac.th/" target="_blank">🌐 เว็บไซต์</a><br><a href="https://www.tiktok.com/@dbtech.technictra?is_from_webapp=1&sender_device=pc" target="_blank">🎵 TikTok</a>';
+if(x.includes('หลักสูตร')||x.includes('เรียน'))return '📚 <b>หลักสูตรที่เปิดสอน</b><br><br>• ระดับประกาศนียบัตรวิชาชีพ (ปวช.)<br>• ระดับประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)';
+if(x.includes('ครู')||x.includes('ผู้สอน'))return '👨‍🏫 หัวหน้าแผนก: <b>นายชูเกียรติ คันฉ่อง</b><br>จำนวนครู: <b>7 คน</b>';
+if(x.includes('ข่าว')||x.includes('ประชาสัมพันธ์'))return '📢 ข่าวประชาสัมพันธ์: <b>งานประชาสัมพันธ์ วท.ตรัง (งานศูนย์ดิจิทัลฯ)</b>';
+if(x.includes('แผนก')||x.includes('ข้อมูล'))return '🏫 <b>แผนกวิชาเทคโนโลยีธุรกิจดิจิทัล</b><br><br>วิทยาลัยเทคนิคตรัง<br>ตึกอำนวยการ ชั้น 5<br>หัวหน้าแผนก: นายชูเกียรติ คันฉ่อง<br>ครู 7 คน<br><br>96 ถนนตรัง-ปะเหลียน หมู่ที่ 4 ตำบลบ้านควน อำเภอเมืองตรัง จังหวัดตรัง 92000';
+return '🤔 ลองถามผมเกี่ยวกับ 🏫 ข้อมูลแผนก, 📚 หลักสูตร, 📝 สมัครเรียน, 📄 เอกสาร, 📞 ติดต่อ หรือ 🗺️ แผนที่ได้ครับ';
+}
+</script>
+</body>
+</html>
